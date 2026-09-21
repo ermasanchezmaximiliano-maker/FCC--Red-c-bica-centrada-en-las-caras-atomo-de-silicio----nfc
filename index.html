@@ -95,6 +95,16 @@
       margin: 0;
     }
 
+    /* 👇 ESTILOS NUEVOS PARA LA IMAGEN 👇 */
+    .header-image {
+      max-width: 100%; /* La imagen nunca será más ancha que la pantalla */
+      height: auto;     /* Mantiene la proporción para no deformarse */
+      margin-top: 20px; /* Separa la imagen de los textos de arriba */
+      border-radius: 12px; /* Bordes redondeados */
+      border: 2px solid var(--card-border); /* Borde sutil */
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.2); /* Brillo cian sutil */
+    }
+
     .section-title {
       color: var(--primary);
       font-size: 0.95rem;
@@ -225,6 +235,10 @@
       </div>
       <h1>Silicio Monocristalino</h1>
       <p class="subtitle">Estructura Cristalina Tipo Diamante</p>
+      
+      <!-- 👇 AQUÍ SE INSERTA LA IMAGEN 👇 -->
+      <img src="image_5.png" alt="Esquema del Átomo y Red de Silicio" class="header-image">
+      
     </div>
 
     <div class="section-title">Red de Bravais y Geometría</div>
@@ -298,7 +312,11 @@
       </div>
     </div>
 
-   
+    <div class="footer">
+      <p>Laboratorio de Semiconductores</p>
+      <p>Física del Estado Sólido &bull; Maqueta NFC</p>
+    </div>
+  </div>
 
 </body>
 </html>
