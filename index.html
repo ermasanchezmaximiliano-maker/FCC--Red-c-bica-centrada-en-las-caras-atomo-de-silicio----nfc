@@ -8,11 +8,19 @@
     :root {
       --bg: #0b0f19;
       --card-bg: #151d30;
+      --card-border: #1e293b;
+      --card-hover: #243049;
       --primary: #38bdf8;
       --accent: #818cf8;
       --text: #f8fafc;
       --subtext: #94a3b8;
       --highlight: #34d399;
+      --badge-bg: rgba(56, 189, 248, 0.1);
+      --badge-border: rgba(56, 189, 248, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -20,49 +28,64 @@
       background-color: var(--bg);
       color: var(--text);
       margin: 0;
-      padding: 20px;
+      padding: 20px 15px;
       display: flex;
       justify-content: center;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 500px;
+      max-width: 520px;
       width: 100%;
     }
 
     .header {
       text-align: center;
-      padding: 20px 0;
-      border-bottom: 2px solid #1e293b;
+      padding: 25px 15px 20px 15px;
+      border-bottom: 2px solid var(--card-border);
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.05) 0%, rgba(11, 15, 25, 0) 100%);
+      border-radius: 16px 16px 0 0;
     }
 
     .element-badge {
-      display: inline-block;
-      width: 80px;
-      height: 80px;
-      border: 3px solid var(--primary);
-      border-radius: 12px;
-      background: #0284c715;
-      margin-bottom: 10px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 90px;
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      background: var(--badge-bg);
+      margin-bottom: 12px;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .element-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
     }
 
     .symbol {
-      font-size: 2.2rem;
-      font-weight: bold;
+      font-size: 2.5rem;
+      font-weight: 800;
       color: var(--primary);
-      line-height: 50px;
+      line-height: 1;
       margin: 0;
     }
 
     .atomic-num {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       color: var(--subtext);
-      margin: 0;
+      margin-top: 2px;
     }
 
     h1 {
-      margin: 5px 0;
-      font-size: 1.6rem;
+      margin: 8px 0 4px 0;
+      font-size: 1.75rem;
+      letter-spacing: -0.5px;
     }
 
     .subtitle {
@@ -74,11 +97,22 @@
 
     .section-title {
       color: var(--primary);
-      font-size: 1.05rem;
-      margin-top: 25px;
-      margin-bottom: 10px;
+      font-size: 0.95rem;
+      margin-top: 28px;
+      margin-bottom: 12px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
     }
 
     .grid {
@@ -89,22 +123,31 @@
 
     .card {
       background-color: var(--card-bg);
-      padding: 15px;
-      border-radius: 10px;
-      border: 1px solid #1e293b;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      background-color: var(--card-hover);
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateY(-2px);
     }
 
     .card-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--subtext);
       display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .card-value {
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--text);
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
     .full-width {
@@ -114,21 +157,61 @@
     .desc-box {
       background: #0f172a;
       border-left: 4px solid var(--primary);
-      padding: 12px;
-      font-size: 0.9rem;
+      padding: 12px 14px;
+      font-size: 0.88rem;
       line-height: 1.5;
       color: #cbd5e1;
       border-radius: 0 8px 8px 0;
-      margin-top: 8px;
+      margin-top: 10px;
+    }
+
+    .author-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 30px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .author-badge-title {
+      font-size: 0.75rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .author-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 4px 0;
+    }
+
+    .author-degree {
+      color: var(--highlight);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin: 0 0 12px 0;
+    }
+
+    .author-meta {
+      font-size: 0.82rem;
+      color: var(--subtext);
+      border-top: 1px solid var(--card-border);
+      padding-top: 10px;
+      margin-top: 10px;
     }
 
     .footer {
       text-align: center;
-      margin-top: 30px;
-      padding-top: 15px;
-      border-top: 1px solid #1e293b;
-      font-size: 0.85rem;
-      color: var(--subtext);
+      margin-top: 20px;
+      padding-bottom: 20px;
+      font-size: 0.8rem;
+      color: #64748b;
     }
   </style>
 </head>
@@ -137,8 +220,8 @@
   <div class="container">
     <div class="header">
       <div class="element-badge">
-        <p class="atomic-num">Z = 14</p>
         <p class="symbol">Si</p>
+        <p class="atomic-num">Z = 14</p>
       </div>
       <h1>Silicio Monocristalino</h1>
       <p class="subtitle">Estructura Cristalina Tipo Diamante</p>
@@ -160,7 +243,7 @@
       </div>
 
       <div class="card">
-        <span class="card-label">Constante de Red ($a$)</span>
+        <span class="card-label">Constante de Red (a)</span>
         <div class="card-value">5.431 Å (0.543 nm)</div>
       </div>
 
@@ -176,7 +259,7 @@
 
       <div class="card">
         <span class="card-label">Enlace Predominante</span>
-        <div class="card-value">Covalente (sp^3)</div>
+        <div class="card-value">Covalente (sp³)</div>
       </div>
 
       <div class="card">
@@ -206,11 +289,16 @@
       </div>
     </div>
 
-    <div class="footer">
-      <p>Laboratorio de Semiconductores</p>
-      <p>Física del Estado Sólido &bull; Maqueta NFC</p>
+    <div class="author-card">
+      <div class="author-badge-title">Proyecto para Laboratorio de Semiconductores</div>
+      <h2 class="author-name">Maximiliano Erma Sánchez</h2>
+      <p class="author-degree">Ingeniería en Semiconductores</p>
+      <div class="author-meta">
+        Física del Estado Sólido &bull; Maqueta Interactiva NFC
+      </div>
     </div>
-  </div>
+
+   
 
 </body>
 </html>
